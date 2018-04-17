@@ -1,0 +1,24 @@
+{
+  "name": "adform-studio-uploader",
+  "version": "1.0.0",
+  "description": "Adform studio uploader to automatize upload/download process",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elibolonur/adform-studio-uploader.git"
+  },
+  "keywords": [
+    "adform",
+    "studio",
+    "uploader"
+  ],
+  "author": "Onur Elibol",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elibolonur/adform-studio-uploader/issues"
+  },
+  "homepage": "https://github.com/elibolonur/adform-studio-uploader#readme"
+}
