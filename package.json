@@ -48,6 +48,7 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "morgan": "^1.9.0",
-    "nightmare": "^3.0.1"
+    "nightmare": "^3.0.1",
+    "nightmare-upload": "^0.1.1"
   }
 }

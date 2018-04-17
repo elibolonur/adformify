@@ -10,6 +10,9 @@ module.exports = {
     ecmaVersion: 2015,
     sourceType: "module"
   },
+  globals: {
+    document: true
+  },
   rules: {
     indent: ["error", 2],
     "linebreak-style": ["error", "unix"],
