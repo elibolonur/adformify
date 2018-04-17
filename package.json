@@ -4,6 +4,8 @@
   "description": "Adform studio uploader to automatize upload/download process",
   "main": "index.js",
   "scripts": {
+    "build": "babel index.js -d build",
+    "dev": "babel-node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +22,31 @@
   "bugs": {
     "url": "https://github.com/elibolonur/adform-studio-uploader/issues"
   },
-  "homepage": "https://github.com/elibolonur/adform-studio-uploader#readme"
+  "homepage": "https://github.com/elibolonur/adform-studio-uploader#readme",
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ],
+      "stage-1"
+    ]
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "chalk": "^2.4.0",
+    "eslint": "^4.19.1",
+    "rimraf": "^2.6.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0"
+  }
 }
