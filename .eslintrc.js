@@ -1,13 +1,14 @@
 module.exports = {
   env: {
-    node: true
+    node: true,
+    es6: true
   },
   extends: [
     "eslint:recommended"
   ],
   parserOptions: {
     parser: "babel-eslint",
-    ecmaVersion: 2015,
+    ecmaVersion: 8,
     sourceType: "module"
   },
   globals: {
@@ -26,8 +27,6 @@ module.exports = {
     "quote-props": ["error", "as-needed"],
     "object-shorthand": "error",
     "space-before-function-paren": ["error", "never"],
-    // "arrow-body-style": 0,
-    "arrow-body-style": ["error", "always"],
     "arrow-parens": ["error", "always"],
     "function-paren-newline": 0,
     "prefer-destructuring": 0,
