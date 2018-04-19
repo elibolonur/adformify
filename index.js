@@ -45,6 +45,25 @@ async function start() {
   // Click Upload
   await driver.findElement(By.xpath("//div[@class='adf-BannerFormatSelect']/div[3]/button[1]")).click();
 
+  // Wait until clicktag shows up & click
+  await driver.wait(until.elementLocated(By.xpath("//*[contains(text(), 'Add clicktag')]")), 10000);
+  const addClickTagButton = driver.findElement(By.xpath("//*[contains(text(), 'Add clicktag')]"));
+  driver.executeScript("arguments[0].click();", addClickTagButton);
+
+  // Get Add clicktag input field
+  await driver.wait(until.elementLocated(By.css("[ng-model='clickTag.url']")), 5000);
+  const clicktagInput = driver.findElement(By.css("[ng-model='clickTag.url']"));
+  clicktagInput.sendKeys("https://www.google.se");
+
+  // Click Save button
+  await driver.findElement(By.css("#global-save-button")).click();
+
+  // Wait until save button dissappears
+  await driver.wait(until.elementLocated(By.css("#global-save-button")), 5000);
+  const exportButton = driver.findElement(By.xpath("//*[contains(text(), 'Export')]"));
+  driver.executeScript("arguments[0].click();", exportButton);
+
+
   Logger.log("I'm done so far.", "magenta");
   // driver.quit();
 }
