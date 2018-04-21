@@ -27,7 +27,6 @@ module.exports = {
     "quote-props": ["error", "as-needed"],
     "object-shorthand": "error",
     "space-before-function-paren": ["error", "never"],
-    "arrow-parens": ["error", "always"],
     "function-paren-newline": 0,
     "prefer-destructuring": 0,
     "prefer-template": 0,
