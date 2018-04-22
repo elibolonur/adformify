@@ -1,7 +1,7 @@
 # AdForm studio uploader  
 A simple tool based on selenium to automate upload process on adform studio  
 
-# Installation  
+## Installation  
 ```npm install```
 
 ## How it works  
