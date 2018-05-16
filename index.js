@@ -21,7 +21,7 @@ app.use((err, req, res, next) => {
 // AppStart
 const server = app.listen(3000, async() => {
   Logger.log(`[app] Running at port: ${server.address().port}`, "green");
-  const fileList = getFilesSync("./test_files");
+  const fileList = getFilesSync("./files");
   const seleniumRunner = new SeleniumRunner(fileList, 2);
 
   seleniumRunner.execute();
