@@ -23,7 +23,10 @@ const server = app.listen(3000, async() => {
   Logger.log(`[app] Running at port: ${server.address().port}`, "green");
   const fileList = getFilesSync("./files");
   const seleniumRunner = new SeleniumRunner(fileList, 2);
-
+  /*
+    TO DO:
+    Ignore .DS_Store files
+  */
   seleniumRunner.execute();
 });
 
