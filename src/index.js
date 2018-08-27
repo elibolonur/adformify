@@ -25,7 +25,6 @@ const server = app.listen(3000, async() => {
   Logger.log(`[app] Running at port: ${server.address().port}`, "green");
 
   const args = minimist(process.argv.slice(2));
-  console.log(args);
   const options = {
     fileList: getFilesSync(args.target || "./"),
     parallelTasks: args.tasks || 2,
