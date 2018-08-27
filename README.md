@@ -18,10 +18,8 @@ There are 4 different options that you can define when you execute the command.
 - tasks 
 - delay
 
---target=dist/zip --cta=https://www.google.se --tasks=2 --delay=0
-
 ### target
-To define target folder. Default is root folder where the command is executed.  
+To define target folder. Default is root folder where the command is executed. Default is ```./files```  
 ex: ```adformify --target=files/zip```
 
 ### cta
