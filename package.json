@@ -16,6 +16,9 @@
     "studio",
     "uploader"
   ],
+  "bin": {
+    "adformupload": "./index.js"
+  },
   "author": "Onur Elibol",
   "license": "MIT",
   "bugs": {
