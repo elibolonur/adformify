@@ -1,5 +1,5 @@
-# AdForm studio uploader  
-A simple tool based on selenium to automate upload process on adform studio  
+# AdFormify
+A simple tool based on selenium to automate upload/download process on Adform studio  
 
 ## Installation  
 ```npm install```
