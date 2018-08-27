@@ -2,7 +2,7 @@
   "name": "adform-studio-uploader",
   "version": "1.0.0",
   "description": "Adform studio uploader to automatize upload/download process",
-  "main": "index.js",
+  "main": "dist",
   "scripts": {
     "dev": "npm run build && node dist --cta=https://www.google.se --tasks=2 --target=./files --delay=0",
     "test": "echo \"Error: no test specified\" && exit 1",
