@@ -32,6 +32,11 @@ const server = app.listen(3000, async() => {
     delay: args.delay || 0
   };
 
+  if (options.fileList.length === 0) {
+    Logger.log(`[File system]: ${Logger.color("No files found!", "red")} Maybe you are not in the right directory?`, "yellow");
+    process.exit();
+  }
+
   const seleniumRunner = new SeleniumRunner(options);
   await seleniumRunner.execute();
   process.exit();
