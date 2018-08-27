@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import morgan from "morgan";
 import express from "express";
 import bodyParser from "body-parser";
@@ -25,7 +26,7 @@ const server = app.listen(3000, async() => {
 
   const args = minimist(process.argv.slice(2));
   const options = {
-    fileList: getFilesSync(args.target || "./files"),
+    fileList: getFilesSync(args.target || "./"),
     parallelTasks: args.tasks || 2,
     CTA: args.cta || "https://www.google.se",
     delay: args.delay || 0
