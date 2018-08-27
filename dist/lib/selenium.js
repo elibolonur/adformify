@@ -17,6 +17,8 @@ var _ora2 = _interopRequireDefault(_ora);
 
 var _seleniumWebdriver = require("selenium-webdriver");
 
+require("chromedriver");
+
 var _logger = require("./logger.js");
 
 var _logger2 = _interopRequireDefault(_logger);
@@ -30,7 +32,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 const downloadPath = "/Users/Onur/Desktop";
 
 const DEFAULT_TIMEOUT = 5000;
-require("chromedriver");
 
 class Selenium {
   constructor() {
