@@ -1,9 +1,10 @@
 import { delay, uid, chunkArray } from "./helpers.js";
 import * as path from "path";
 import ora from "ora";
-
+import { Builder, By, until } from "selenium-webdriver";
+import "chromedriver";
 import Logger from "./logger.js";
-const { Builder, By, until } = require("selenium-webdriver");
+
 const downloadPath = "/Users/Onur/Desktop";
 
 const DEFAULT_TIMEOUT = 5000;
