@@ -4,8 +4,9 @@
   "description": "Adform studio uploader to automatize upload/download process",
   "main": "index.js",
   "scripts": {
-    "dev": "babel-node index.js --cta=https://www.google.se --tasks=2 --target=./files --delay=0",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npm run build && node dist --cta=https://www.google.se --tasks=2 --target=./files --delay=0",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rimraf ./dist && babel src -d dist"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,7 @@
     "uploader"
   ],
   "bin": {
-    "adformupload": "./index.js"
+    "adformify": "./index.js"
   },
   "author": "Onur Elibol",
   "license": "MIT",
@@ -44,7 +45,7 @@
     "babel-preset-stage-1": "^6.24.1",
     "chalk": "^2.4.0",
     "eslint": "^4.19.1",
-    "nodemon": "^1.17.3",
+    "nodemon": "^1.18.3",
     "rimraf": "^2.6.2"
   },
   "dependencies": {

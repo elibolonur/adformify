@@ -61,7 +61,7 @@ class Selenium {
   quit() {
     // this.spinner.start("");
     // this.spinner.color = "green";
-    // this.spinner.succeed(Logger.color("[ADForms]: Upload completed", "green"));
+    // this.spinner.succeed(Logger.color("[ADForm]: Upload completed", "green"));
     this.driver.quit();
   }
 
@@ -152,10 +152,10 @@ export class AdForm extends Selenium {
 
   async execute() {
     // this.spinner.start(
-    //   Logger.color(`[ADForms]: Uploading file: ${_file.substring(_file.lastIndexOf("/") + 1)}`, "cyan")
+    //   Logger.color(`[AdForm]: Uploading file: ${_file.substring(_file.lastIndexOf("/") + 1)}`, "cyan")
     // );
     const _file = this.filePath;
-    Logger.log(`[ADForms]: Uploading file: ${_file.substring(_file.lastIndexOf("/") + 1)}`, "cyan");
+    Logger.log(`[AdForm]: Uploading file: ${_file.substring(_file.lastIndexOf("/") + 1)}`, "cyan");
     try {
       // Browser logic
       this.driver.get(this.uploadURL);
@@ -196,14 +196,14 @@ export class AdForm extends Selenium {
 
       this.findElementAndClick(By.xpath("//*[@ng-click='downloadBanner()' and contains(text(), 'Export')]"), "script");
 
-      // this.spinner.succeed(Logger.color(`[ADForms]: Done: ${_file.substring(_file.lastIndexOf("/") + 1)}`, "cyan"));
-      Logger.log(`[ADForms]: Done: ${_file.substring(_file.lastIndexOf("/") + 1)}`, "green");
+      // this.spinner.succeed(Logger.color(`[AdForm]: Done: ${_file.substring(_file.lastIndexOf("/") + 1)}`, "cyan"));
+      Logger.log(`[AdForm]: Done: ${_file.substring(_file.lastIndexOf("/") + 1)}`, "green");
 
       await delay(this.delay);
       return this.driver;
       /* END */
     } catch (error) {
-      Logger.log(`[ADForms]: Error in: ${_file.substring(_file.lastIndexOf("/") + 1)}`, "red");
+      Logger.log(`[AdForm]: Error in: ${_file.substring(_file.lastIndexOf("/") + 1)}`, "red");
       Logger.log(`${error}`, "red");
     }
   }
