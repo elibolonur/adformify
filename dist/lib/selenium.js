@@ -11,10 +11,6 @@ var _path = require("path");
 
 var path = _interopRequireWildcard(_path);
 
-var _ora = require("ora");
-
-var _ora2 = _interopRequireDefault(_ora);
-
 var _seleniumWebdriver = require("selenium-webdriver");
 
 require("chromedriver");
@@ -47,8 +43,6 @@ class Selenium {
     };
     // Selenium Driver
     this.driver = new _seleniumWebdriver.Builder().usingServer().withCapabilities(this.capabilities).build();
-
-    this.spinner = (0, _ora2.default)("");
   }
 
   // Functions
@@ -100,9 +94,6 @@ class Selenium {
   }
 
   quit() {
-    // this.spinner.start("");
-    // this.spinner.color = "green";
-    // this.spinner.succeed(Logger.color("[ADForm]: Upload completed", "green"));
     this.driver.quit();
   }
 
@@ -209,9 +200,6 @@ class AdForm extends Selenium {
     var _this8 = this;
 
     return _asyncToGenerator(function* () {
-      // this.spinner.start(
-      //   Logger.color(`[AdForm]: Uploading file: ${_file.substring(_file.lastIndexOf("/") + 1)}`, "cyan")
-      // );
       const _file = _this8.filePath;
       _logger2.default.log(`[AdForm]: Uploading file: ${_file.substring(_file.lastIndexOf("/") + 1)}`, "cyan");
       try {
@@ -252,7 +240,6 @@ class AdForm extends Selenium {
 
         _this8.findElementAndClick(_seleniumWebdriver.By.xpath("//*[@ng-click='downloadBanner()' and contains(text(), 'Export')]"), "script");
 
-        // this.spinner.succeed(Logger.color(`[AdForm]: Done: ${_file.substring(_file.lastIndexOf("/") + 1)}`, "cyan"));
         _logger2.default.log(`[AdForm]: Done: ${_file.substring(_file.lastIndexOf("/") + 1)}`, "green");
 
         yield (0, _helpers.delay)(_this8.delay);

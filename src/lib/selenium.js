@@ -1,6 +1,5 @@
 import { delay, uid, chunkArray } from "./helpers.js";
 import * as path from "path";
-import ora from "ora";
 import { Builder, By, until } from "selenium-webdriver";
 import "chromedriver";
 import Logger from "./logger.js";
@@ -27,8 +26,6 @@ class Selenium {
       .usingServer()
       .withCapabilities(this.capabilities)
       .build();
-
-    this.spinner = ora("");
   }
 
   // Functions
@@ -60,9 +57,6 @@ class Selenium {
   }
 
   quit() {
-    // this.spinner.start("");
-    // this.spinner.color = "green";
-    // this.spinner.succeed(Logger.color("[ADForm]: Upload completed", "green"));
     this.driver.quit();
   }
 
@@ -152,9 +146,6 @@ export class AdForm extends Selenium {
   }
 
   async execute() {
-    // this.spinner.start(
-    //   Logger.color(`[AdForm]: Uploading file: ${_file.substring(_file.lastIndexOf("/") + 1)}`, "cyan")
-    // );
     const _file = this.filePath;
     Logger.log(`[AdForm]: Uploading file: ${_file.substring(_file.lastIndexOf("/") + 1)}`, "cyan");
     try {
@@ -197,7 +188,6 @@ export class AdForm extends Selenium {
 
       this.findElementAndClick(By.xpath("//*[@ng-click='downloadBanner()' and contains(text(), 'Export')]"), "script");
 
-      // this.spinner.succeed(Logger.color(`[AdForm]: Done: ${_file.substring(_file.lastIndexOf("/") + 1)}`, "cyan"));
       Logger.log(`[AdForm]: Done: ${_file.substring(_file.lastIndexOf("/") + 1)}`, "green");
 
       await delay(this.delay);
