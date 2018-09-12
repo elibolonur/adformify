@@ -29,7 +29,7 @@ const server = app.listen(3000, async() => {
     fileList: getFilesSync(args.target || "./"),
     parallelTasks: args.tasks || 2,
     CTA: args.cta || "https://www.google.se",
-    delay: args.delay || -1500
+    delay: args.delay || 0
   };
 
   if (options.fileList.length === 0) {

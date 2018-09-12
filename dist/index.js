@@ -48,7 +48,7 @@ const server = app.listen(3000, _asyncToGenerator(function* () {
     fileList: (0, _helpers.getFilesSync)(args.target || "./"),
     parallelTasks: args.tasks || 2,
     CTA: args.cta || "https://www.google.se",
-    delay: args.delay || -1500
+    delay: args.delay || 0
   };
 
   if (options.fileList.length === 0) {

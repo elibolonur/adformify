@@ -6,7 +6,7 @@ import Logger from "./logger.js";
 
 const downloadPath = "/Users/Onur/Desktop";
 
-const DEFAULT_TIMEOUT = 5000;
+const DEFAULT_TIMEOUT = 10000;
 
 class Selenium {
   constructor() {
@@ -140,9 +140,9 @@ export class AdForm extends Selenium {
     this.id = uid();
     this.filePath = _filePath;
     this.CTA = _cta;
-    this.delay = 1250 + _delay;
-    this.miniDelay =  250 + this.delay / 5;
-    this.downloadDelay = 1750 + this.miniDelay;
+    this.delay = 250 + _delay;
+    this.miniDelay =  150 + this.delay / 5;
+    this.downloadDelay = 3000;
   }
 
   async execute() {
@@ -156,22 +156,21 @@ export class AdForm extends Selenium {
       await delay(this.delay);
 
       //  Click Category selectbox > Click Display
-      this.findElementAndClick(By.xpath("//*[@ng-model='tempAsset.category']"));
+      await this.waitForElementAndClick(By.xpath("//*[@ng-model='tempAsset.category']"));
       await delay(this.miniDelay);
-      this.findElementAndClick(By.xpath("//*[@data-title='Display' and @data-value='format.category']"));
+      await this.waitForElementAndClick(By.xpath("//*[@data-title='Display' and @data-value='format.category']"));
       await delay(this.miniDelay);
 
       // Click Format selectbox > Click Standard
-      this.findElementAndClick(By.xpath("//*[@ng-model='tempAsset.format']"));
+      await this.waitForElementAndClick(By.xpath("//*[@ng-model='tempAsset.format']"));
       await delay(this.miniDelay);
-      this.findElementAndClick(By.xpath("//*[@data-title='Standard' and @data-value='format']"));
+      await this.waitForElementAndClick(By.xpath("//*[@data-title='Standard' and @data-value='format']"));
       await delay(this.miniDelay);
 
       // Click Upload
-      this.findElementAndClick(
+      await this.waitForElementAndClick(
         By.xpath("//*[@ng-controller='BannerFormatSelectController as vm']//button[contains(text(), 'Upload')]")
       );
-      // this.findElementAndClick(By.xpath("//*[@ng-controller='BannerFormatSelectController as vm' and .//div[@class='adf-Modal-bottom']]"));
       await delay(this.delay);
 
       // Wait until Add clicktag shows up & click
@@ -179,23 +178,25 @@ export class AdForm extends Selenium {
       await delay(this.miniDelay);
 
       // Get Add clicktag input field
-      const clicktagInput = await this.findElement(By.xpath("//*[@ng-model='clickTag.url']"));
+      const clicktagInput = await this.waitForElementAndGet(By.xpath("//*[@ng-model='clickTag.url']"));
       await clicktagInput.sendKeys(this.CTA);
 
-      // // Click Save button
-      this.findElementAndClick(By.xpath("//*[@ng-click='saveComponentSettings()']"));
+      // Click Save button
+      await this.waitForElementAndClick(By.xpath("//*[@ng-click='saveComponentSettings()']"));
       await delay(this.downloadDelay);
 
-      this.findElementAndClick(By.xpath("//*[@ng-click='downloadBanner()' and contains(text(), 'Export')]"), "script");
+      // Download the banner
+      await this.waitForElementAndClick(By.xpath("//*[@ng-click='downloadBanner()' and contains(text(), 'Export')]"), "script");
+      await delay(this.downloadDelay);
 
       Logger.log(`[AdForm]: Done: ${_file.substring(_file.lastIndexOf("/") + 1)}`, "green");
-
-      await delay(this.delay);
       return this.driver;
       /* END */
     } catch (error) {
-      Logger.log(`[AdForm]: Error in: ${_file.substring(_file.lastIndexOf("/") + 1)}`, "red");
+      Logger.log(`[AdForm]: Error during upload of ${_file.substring(_file.lastIndexOf("/") + 1)}\n`, "red");
       Logger.log(`${error}`, "red");
+      Logger.log("------------------------------------------------------------------------------", "red");
+      this.quit();
     }
   }
 }

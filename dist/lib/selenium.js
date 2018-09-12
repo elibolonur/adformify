@@ -27,7 +27,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 const downloadPath = "/Users/Onur/Desktop";
 
-const DEFAULT_TIMEOUT = 5000;
+const DEFAULT_TIMEOUT = 10000;
 
 class Selenium {
   constructor() {
@@ -191,9 +191,9 @@ class AdForm extends Selenium {
     this.id = (0, _helpers.uid)();
     this.filePath = _filePath;
     this.CTA = _cta;
-    this.delay = 1250 + _delay;
-    this.miniDelay = 250 + this.delay / 5;
-    this.downloadDelay = 1750 + this.miniDelay;
+    this.delay = 250 + _delay;
+    this.miniDelay = 150 + this.delay / 5;
+    this.downloadDelay = 3000;
   }
 
   execute() {
@@ -210,20 +210,19 @@ class AdForm extends Selenium {
         yield (0, _helpers.delay)(_this8.delay);
 
         //  Click Category selectbox > Click Display
-        _this8.findElementAndClick(_seleniumWebdriver.By.xpath("//*[@ng-model='tempAsset.category']"));
+        yield _this8.waitForElementAndClick(_seleniumWebdriver.By.xpath("//*[@ng-model='tempAsset.category']"));
         yield (0, _helpers.delay)(_this8.miniDelay);
-        _this8.findElementAndClick(_seleniumWebdriver.By.xpath("//*[@data-title='Display' and @data-value='format.category']"));
+        yield _this8.waitForElementAndClick(_seleniumWebdriver.By.xpath("//*[@data-title='Display' and @data-value='format.category']"));
         yield (0, _helpers.delay)(_this8.miniDelay);
 
         // Click Format selectbox > Click Standard
-        _this8.findElementAndClick(_seleniumWebdriver.By.xpath("//*[@ng-model='tempAsset.format']"));
+        yield _this8.waitForElementAndClick(_seleniumWebdriver.By.xpath("//*[@ng-model='tempAsset.format']"));
         yield (0, _helpers.delay)(_this8.miniDelay);
-        _this8.findElementAndClick(_seleniumWebdriver.By.xpath("//*[@data-title='Standard' and @data-value='format']"));
+        yield _this8.waitForElementAndClick(_seleniumWebdriver.By.xpath("//*[@data-title='Standard' and @data-value='format']"));
         yield (0, _helpers.delay)(_this8.miniDelay);
 
         // Click Upload
-        _this8.findElementAndClick(_seleniumWebdriver.By.xpath("//*[@ng-controller='BannerFormatSelectController as vm']//button[contains(text(), 'Upload')]"));
-        // this.findElementAndClick(By.xpath("//*[@ng-controller='BannerFormatSelectController as vm' and .//div[@class='adf-Modal-bottom']]"));
+        yield _this8.waitForElementAndClick(_seleniumWebdriver.By.xpath("//*[@ng-controller='BannerFormatSelectController as vm']//button[contains(text(), 'Upload')]"));
         yield (0, _helpers.delay)(_this8.delay);
 
         // Wait until Add clicktag shows up & click
@@ -231,23 +230,25 @@ class AdForm extends Selenium {
         yield (0, _helpers.delay)(_this8.miniDelay);
 
         // Get Add clicktag input field
-        const clicktagInput = yield _this8.findElement(_seleniumWebdriver.By.xpath("//*[@ng-model='clickTag.url']"));
+        const clicktagInput = yield _this8.waitForElementAndGet(_seleniumWebdriver.By.xpath("//*[@ng-model='clickTag.url']"));
         yield clicktagInput.sendKeys(_this8.CTA);
 
-        // // Click Save button
-        _this8.findElementAndClick(_seleniumWebdriver.By.xpath("//*[@ng-click='saveComponentSettings()']"));
+        // Click Save button
+        yield _this8.waitForElementAndClick(_seleniumWebdriver.By.xpath("//*[@ng-click='saveComponentSettings()']"));
         yield (0, _helpers.delay)(_this8.downloadDelay);
 
-        _this8.findElementAndClick(_seleniumWebdriver.By.xpath("//*[@ng-click='downloadBanner()' and contains(text(), 'Export')]"), "script");
+        // Download the banner
+        yield _this8.waitForElementAndClick(_seleniumWebdriver.By.xpath("//*[@ng-click='downloadBanner()' and contains(text(), 'Export')]"), "script");
+        yield (0, _helpers.delay)(_this8.downloadDelay);
 
         _logger2.default.log(`[AdForm]: Done: ${_file.substring(_file.lastIndexOf("/") + 1)}`, "green");
-
-        yield (0, _helpers.delay)(_this8.delay);
         return _this8.driver;
         /* END */
       } catch (error) {
-        _logger2.default.log(`[AdForm]: Error in: ${_file.substring(_file.lastIndexOf("/") + 1)}`, "red");
+        _logger2.default.log(`[AdForm]: Error during upload of ${_file.substring(_file.lastIndexOf("/") + 1)}\n`, "red");
         _logger2.default.log(`${error}`, "red");
+        _logger2.default.log("------------------------------------------------------------------------------", "red");
+        _this8.quit();
       }
     })();
   }
