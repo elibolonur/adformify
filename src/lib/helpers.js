@@ -29,7 +29,7 @@ export function getFilesSync(targetFolder = "./") {
 
   return fs
     .readdirSync(targetFolder)
-    .filter((file) => file.indexOf(".") !== 0 && file.includes("zip"))
+    .filter((file) => file.indexOf(".") !== 0 && !file.includes("fullformat") && file.includes("zip"))
     .map((file) => `${targetFolder}/${file}`);
 }
 

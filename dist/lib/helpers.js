@@ -53,7 +53,7 @@ function getFilesSync(targetFolder = "./") {
     return [];
   }
 
-  return fs.readdirSync(targetFolder).filter(file => file.indexOf(".") !== 0 && file.includes("zip")).map(file => `${targetFolder}/${file}`);
+  return fs.readdirSync(targetFolder).filter(file => file.indexOf(".") !== 0 && !file.includes("fullformat") && file.includes("zip")).map(file => `${targetFolder}/${file}`);
 }
 
 function chunkArray(array, chunkSize) {
