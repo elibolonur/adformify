@@ -1,6 +1,6 @@
 {
   "name": "adformify",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Adform studio uploader to automatize upload/download process",
   "main": "dist",
   "scripts": {
