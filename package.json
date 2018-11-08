@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/elibolonur/adform-studio-uploader.git"
+    "url": "git+https://github.com/elibolonur/adformify.git"
   },
   "keywords": [
     "adform",
@@ -23,9 +23,9 @@
   "author": "Onur Elibol",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/elibolonur/adform-studio-uploader/issues"
+    "url": "https://github.com/elibolonur/adformify/issues"
   },
-  "homepage": "https://github.com/elibolonur/adform-studio-uploader#readme",
+  "homepage": "https://github.com/elibolonur/adformify#readme",
   "babel": {
     "presets": [
       [
